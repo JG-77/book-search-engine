@@ -23,6 +23,13 @@ const typeDefs = gql`
   }
 
   # still need mutation type and Auth type
+  type Mutation {
+
+  }
+
+  type Auth {
+      
+  }
 `;
 
 module.exports = typeDefs;
