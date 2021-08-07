@@ -21,15 +21,6 @@ const typeDefs = gql`
   type Query {
     me(_id: String): [User]
   }
-
-  # still need mutation type and Auth type
-  type Mutation {
-
-  }
-
-  type Auth {
-      
-  }
 `;
 
 module.exports = typeDefs;
