@@ -30,8 +30,7 @@ module.exports = {
       return req;
     }
 
-    // send to next endpoint
-    //next();
+    // return request
     return req;
   },
   signToken: function ({ username, email, _id }) {

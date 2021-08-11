@@ -24,6 +24,7 @@ const resolvers = {
 
       return { token, user };
     },
+    //
     login: async (parents, { email, password }) => {
       const user = await User.find({ email });
 
@@ -46,7 +47,24 @@ const resolvers = {
         return;
       }
     },
-    // saveBook: async (parents, args) => {},
+    saveBook: async (parents, { bookId, book }, context) => {
+      if (context.user) {
+        return Profile.findOneAndUpdate(
+          { _id: bookId },
+          {
+            //do I  add all book fields in the object??
+            $addToSet: { savedBooks: book },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      } else {
+        console.error('failed to find user. check seeds or create this user');
+        return;
+      }
+    },
     // removeBook: async (parents, args) => {},
   },
 };

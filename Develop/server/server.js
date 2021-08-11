@@ -23,9 +23,6 @@ const server = new ApolloServer({
 
 //apply server to our middleware
 server.applyMiddleware({ app });
-// server.start().then(() => {
-//   server.applyMiddleware({ app });
-// });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -38,9 +35,6 @@ if (process.env.NODE_ENV === 'production') {
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build'));
 });
-//app.use(routes);
-
-// app.use('/', express.static('public'));
 
 db.once('open', () => {
   app.listen(PORT, () => {
