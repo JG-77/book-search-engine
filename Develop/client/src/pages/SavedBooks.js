@@ -13,7 +13,8 @@ import { removeBookId } from '../utils/localStorage';
 //imported query and mutation hooks
 import { useQuery, useMutation } from '@apollo/client';
 //imported query and mutation
-import { GET_ME, REMOVE_BOOK } from '../utils/queries';
+import { GET_ME } from '../utils/queries';
+import { REMOVE_BOOK } from '../utils/mutations';
 
 const SavedBooks = () => {
   //const [userData, setUserData] = useState({});
@@ -28,7 +29,7 @@ const SavedBooks = () => {
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     //added usemutation hook
-    const [deleteBook, { error }] = useMutation(SAVE_BOOK);
+    const [deleteBook, { error }] = useMutation(REMOVE_BOOK);
     if (!token) {
       return false;
     }
