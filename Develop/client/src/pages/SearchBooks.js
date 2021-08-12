@@ -40,7 +40,9 @@ const SearchBooks = () => {
     }
 
     try {
-      const response = await searchGoogleBooks(searchInput);
+      const response = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=${searchInput}`
+      );
 
       if (!response.ok) {
         throw new Error('something went wrong!');
@@ -62,11 +64,10 @@ const SearchBooks = () => {
       console.error(err);
     }
   };
-
+  const [saveBook, { error }] = useMutation(SAVE_BOOK);
   // create function to handle saving a book to our database
   const handleSaveBook = async (bookId) => {
     //execute SAVE_BOOK mutation
-    const [saveBook, { error }] = useMutation(SAVE_BOOK);
 
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);

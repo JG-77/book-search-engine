@@ -17,12 +17,10 @@ const LoginForm = () => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
   };
-
+  //useMutation hook for login
+  const [loginUser, { error }] = useMutation(LOGIN_USER);
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
-    //useMutation hook for login
-    const [loginUser, { error }] = useMutation(LOGIN_USER);
 
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;

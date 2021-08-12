@@ -19,7 +19,8 @@ const SignupForm = () => {
   const [validated] = useState(false);
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
-
+  // added muation hook for ADD_USER
+  const [createUser, { error }] = useMutation(ADD_USER);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
@@ -27,9 +28,6 @@ const SignupForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
-    // added muation hook for ADD_USER
-    const [createUser, { error }] = useMutation(ADD_USER);
 
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
