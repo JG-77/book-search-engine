@@ -44,9 +44,10 @@ const SignupForm = () => {
       });
       console.log('response', response);
 
-      const { token, user } = await response;
-      console.log(user);
-      Auth.login(response.addUser.token);
+      //const { token, user } = await response.data;
+      //console.log(user);
+      //Auth.login(response.addUser.token);
+      Auth.login(response.data.addUser.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
