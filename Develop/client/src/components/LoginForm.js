@@ -31,15 +31,11 @@ const LoginForm = () => {
 
     try {
       const response = await loginUser({
+        //pass in form data as a variable object
         variables: { ...userFormData },
       });
 
-      // if (!response.ok) {
-      //   throw new Error('something went wrong!');
-      // }
-
       const token = response;
-      //console.log(user);
       Auth.login(token);
     } catch (err) {
       console.error(err);
