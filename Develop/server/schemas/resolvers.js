@@ -54,6 +54,7 @@ const resolvers = {
     // logged in users can add a book to their saved library
     saveBook: async (parents, { bookId, book }, context) => {
       //if user is logged in and has valid jwt then allow functionality
+      console.log(bookId, book);
       if (context.user) {
         return Profile.findOneAndUpdate(
           { _id: bookId },
